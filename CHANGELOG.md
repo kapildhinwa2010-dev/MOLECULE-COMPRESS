@@ -8,3 +8,6 @@
 - Per-layer sensitivity scan (ternarize one layer at a time).
 - int8 dynamic PTQ comparison point.
 - Bounded synthetic test suite and self-diagnosing CI.
+
+### Fixed
+- Packed ternary size math (5 weights per byte) in size_report.
