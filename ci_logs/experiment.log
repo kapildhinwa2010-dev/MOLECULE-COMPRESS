@@ -1,7 +1,7 @@
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 [transformers] `torch_dtype` is deprecated! Use `dtype` instead!
 loading Qwen/Qwen2.5-0.5B
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:56,  5.16it/s]Loading weights:  72%|███████▏  | 209/290 [00:00<00:00, 880.52it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 803.02it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:54,  5.31it/s]Loading weights:  72%|███████▏  | 209/290 [00:00<00:00, 890.91it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 809.39it/s]
 /home/runner/work/MOLECULE-COMPRESS/MOLECULE-COMPRESS/ternary_ptq.py:141: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
 For migrations of users: 
 1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
@@ -17,7 +17,7 @@ baseline ppl = 14.1541
 int8 dynamic PTQ ppl ...
 full ternary PTQ ...
 ternary ppl = 8.233887632216209e+301 after 169 layers
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:07<35:19,  7.33s/it]Loading weights:   2%|▏         | 6/290 [00:07<04:22,  1.08it/s]Loading weights:   3%|▎         | 9/290 [00:07<02:47,  1.67it/s]Loading weights:   4%|▍         | 13/290 [00:08<01:35,  2.91it/s]Loading weights:   6%|▌         | 16/290 [00:08<01:07,  4.03it/s]Loading weights:   7%|▋         | 19/290 [00:08<00:57,  4.68it/s]Loading weights:   8%|▊         | 24/290 [00:08<00:34,  7.63it/s]Loading weights:   9%|▉         | 27/290 [00:08<00:29,  8.87it/s]Loading weights:  10%|█         | 30/290 [00:09<00:24, 10.60it/s]Loading weights:  12%|█▏        | 34/290 [00:09<00:18, 14.05it/s]Loading weights:  13%|█▎        | 39/290 [00:09<00:13, 18.56it/s]Loading weights:  19%|█▊        | 54/290 [00:09<00:06, 38.79it/s]Loading weights:  21%|██        | 60/290 [00:09<00:06, 37.23it/s]Loading weights:  22%|██▏       | 65/290 [00:09<00:06, 36.18it/s]Loading weights:  24%|██▍       | 70/290 [00:09<00:05, 38.29it/s]Loading weights:  26%|██▌       | 75/290 [00:10<00:06, 34.17it/s]Loading weights:  29%|██▉       | 85/290 [00:10<00:04, 45.04it/s]Loading weights:  32%|███▏      | 93/290 [00:10<00:03, 51.58it/s]Loading weights:  36%|███▌      | 103/290 [00:10<00:03, 60.11it/s]Loading weights:  41%|████      | 118/290 [00:10<00:02, 80.02it/s]Loading weights:  44%|████▍     | 127/290 [00:10<00:01, 82.50it/s]Loading weights:  48%|████▊     | 139/290 [00:10<00:01, 85.66it/s]Loading weights:  51%|█████▏    | 149/290 [00:10<00:01, 87.35it/s]Loading weights:  58%|█████▊    | 168/290 [00:11<00:01, 111.92it/s]Loading weights:  62%|██████▏   | 180/290 [00:11<00:01, 100.62it/s]Loading weights:  69%|██████▊   | 199/290 [00:11<00:00, 102.49it/s]Loading weights:  72%|███████▏  | 210/290 [00:11<00:00, 91.74it/s] Loading weights:  77%|███████▋  | 224/290 [00:11<00:00, 93.99it/s]Loading weights:  81%|████████  | 234/290 [00:11<00:00, 76.55it/s]Loading weights:  84%|████████▍ | 245/290 [00:11<00:00, 78.67it/s]Loading weights:  92%|█████████▏| 267/290 [00:12<00:00, 77.52it/s]Loading weights:  95%|█████████▌| 276/290 [00:12<00:00, 46.42it/s]Loading weights:  98%|█████████▊| 283/290 [00:13<00:00, 22.39it/s]Loading weights: 100%|██████████| 290/290 [00:13<00:00, 25.92it/s]Loading weights: 100%|██████████| 290/290 [00:13<00:00, 20.85it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:12<59:39, 12.38s/it]Loading weights:   1%|          | 2/290 [00:12<25:54,  5.40s/it]Loading weights:   1%|          | 3/290 [00:13<14:21,  3.00s/it]Loading weights:   4%|▍         | 12/290 [00:13<02:04,  2.24it/s]Loading weights: 100%|██████████| 290/290 [00:13<00:00, 21.93it/s]
 layer sensitivity (k = 12 ) ...
 report written to results/ptq_report.json
 {
@@ -37,5 +37,5 @@ report written to results/ptq_report.json
     "ternary_bytes": 98935348
   },
   "corpus_size": 8,
-  "seconds": 88.8
+  "seconds": 84.6
 }
