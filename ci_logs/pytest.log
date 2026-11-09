@@ -13,4 +13,4 @@ tests/test_ternary_ptq.py::test_demo_report_fields PASSED                [ 71%]
 tests/test_ternary_ptq.py::test_absmean_scale_positive PASSED            [ 85%]
 tests/test_ternary_ptq.py::test_version PASSED                           [100%]
 
-============================== 7 passed in 1.64s ===============================
+============================== 7 passed in 1.55s ===============================
