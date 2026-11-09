@@ -2,10 +2,10 @@
   "experiment": "ternary PTQ collapse (A)",
   "model": "Qwen/Qwen2.5-0.5B",
   "version": "0.1.0",
-  "baseline_ppl": 14.1541,
-  "int8_ppl": 139.9037,
-  "ternary_ppl": 8.233887632216209e+301,
-  "collapse_factor": 5.81730406153154e+300,
+  "baseline_ppl": 14.1106,
+  "int8_ppl": 138.5319,
+  "ternary_ppl": 2.130978470864718e+302,
+  "collapse_factor": 1.5101947500320074e+301,
   "layers_ternarized": 169,
   "sizes": {
     "total_params": 494032768,
@@ -17,53 +17,53 @@
   "sensitivity": [
     {
       "layer": "model.layers.0.self_attn.q_proj",
-      "ppl_solo": 32.0879
+      "ppl_solo": 31.8326
     },
     {
       "layer": "model.layers.2.self_attn.k_proj",
-      "ppl_solo": 19.7343
+      "ppl_solo": 19.4298
     },
     {
       "layer": "model.layers.4.self_attn.o_proj",
-      "ppl_solo": 446470.3959
+      "ppl_solo": 447244.1799
     },
     {
       "layer": "model.layers.6.mlp.gate_proj",
-      "ppl_solo": 518738.6683
+      "ppl_solo": 510650.6447
     },
     {
       "layer": "model.layers.8.mlp.up_proj",
-      "ppl_solo": 5062622.6966
+      "ppl_solo": 5060270.5576
     },
     {
       "layer": "model.layers.10.mlp.down_proj",
-      "ppl_solo": 5439504.2066
+      "ppl_solo": 5397017.8441
     },
     {
       "layer": "model.layers.13.self_attn.k_proj",
-      "ppl_solo": 14.9442
+      "ppl_solo": 14.8935
     },
     {
       "layer": "model.layers.15.self_attn.v_proj",
-      "ppl_solo": 364862.8627
+      "ppl_solo": 365258.7456
     },
     {
       "layer": "model.layers.17.self_attn.o_proj",
-      "ppl_solo": 14926.7382
+      "ppl_solo": 15009.6476
     },
     {
       "layer": "model.layers.19.mlp.gate_proj",
-      "ppl_solo": 33858.0233
+      "ppl_solo": 33378.4338
     },
     {
       "layer": "model.layers.21.mlp.down_proj",
-      "ppl_solo": 58951.0612
+      "ppl_solo": 59371.2888
     },
     {
       "layer": "lm_head",
-      "ppl_solo": 2.0881277699702557e+248
+      "ppl_solo": 2.5866005990137585e+248
     }
   ],
   "corpus_size": 8,
-  "seconds": 84.6
+  "seconds": 91.4
 }
