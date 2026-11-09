@@ -32,11 +32,14 @@ def test_ternarize_linear_inplace():
 
 
 def test_size_math():
-    m = nn.Linear(1000, 1000)  # 1e6 weights
+    m = nn.Linear(1000, 1000, bias=False)  # exactly 1e6 weights, nothing else
     s = tp.size_report(m)
     assert s["linear_params"] == 1_000_000
-    # 5 weights per byte -> 200_000 bytes packed
-    assert s["ternary_bytes"] == 200_000 + 0
+    assert s["total_params"] == 1_000_000
+    # 5 packed trits per byte -> 200_000 bytes for the linear weights
+    assert s["ternary_bytes"] == 200_000
+    # int8 linear weights -> 1e6 bytes
+    assert s["int8_bytes"] == 1_000_000
     assert s["bf16_bytes"] == 2_000_000
 
 
