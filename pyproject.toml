@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molecule-compress"
+version = "0.1.0"
+description = "Quality-gated LLM compression experiments - ternary PTQ collapse, tensor decomposition, implicit weight codecs, knowledge atoms"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+torch = ["torch>=2.0"]
+llm = ["torch>=2.0", "transformers>=4.40"]
+
+[tool.setuptools]
+py-modules = ["ternary_ptq"]
