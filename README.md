@@ -35,7 +35,7 @@ on Qwen2.5-0.5B.
 
 Install (GPU default):
 
-    pip install torch
+    pip install torch transformers
 
 <details>
 <summary>💻 CPU-only install</summary>
@@ -56,9 +56,9 @@ Run the real experiment on Qwen2.5-0.5B (CPU is enough, ~5-10 min):
 <details>
 <summary>▶️ One-click: run via GitHub Actions</summary>
 
-Go to **Actions → Ternary PTQ experiment → Run workflow**. The run downloads
-the public weights, measures everything, and commits `results/ptq_report.json`
-plus `ci_logs/experiment.log` back to this branch.
+From the `main` branch, go to **Actions → Ternary PTQ experiment → Run workflow**.
+The run downloads the public weights and measures everything. Its result and
+log are published back to `main` by a separate, narrowly permissioned job.
 
 </details>
 
@@ -98,8 +98,9 @@ with numbers; ternary requires training-time QAT (Experiment C).
 
     python -m pytest tests/ -v
 
-CI runs the suite on CPU torch and commits its log as `ci_logs/pytest.log`
-(the log is the proof - it is committed even when tests fail).
+CI runs the suite on CPU torch and uploads `ci_logs/pytest.log` as a workflow
+artifact (including on test failure); it does not write CI logs back to the
+repository.
 
 ## ⚠️ Honest limitations
 

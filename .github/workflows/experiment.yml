@@ -5,15 +5,20 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   run-experiment:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -26,12 +31,41 @@ jobs:
           set -o pipefail
           mkdir -p ci_logs results
           python ternary_ptq.py --model Qwen/Qwen2.5-0.5B --out results/ptq_report.json 2>&1 | tee ci_logs/experiment.log
-      - name: Commit results
+      - name: Upload experiment output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-output
+          path: |
+            results/ptq_report.json
+            ci_logs/experiment.log
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish-results:
+    if: always() && github.ref == 'refs/heads/main'
+    needs: run-experiment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download experiment output
+        uses: actions/download-artifact@v4
+        with:
+          name: experiment-output
+          path: .
+        continue-on-error: true
+      - name: Commit results and logs
         if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add results/ ci_logs/experiment.log
-          git commit -m "experiment: ternary PTQ collapse run on Qwen2.5-0.5B [skip ci]" || echo "nothing to commit"
-          git pull --rebase origin main || true
-          git push || echo "push skipped"
+          if [ -f results/ptq_report.json ]; then git add results/ptq_report.json; fi
+          if [ -f ci_logs/experiment.log ]; then git add ci_logs/experiment.log; fi
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "experiment: ternary PTQ collapse run on Qwen2.5-0.5B [skip ci]"
+            git push origin HEAD:main
+          fi
