@@ -8,23 +8,9 @@ collecting ... collected 7 items
 tests/test_ternary_ptq.py::test_values_are_ternary PASSED                [ 14%]
 tests/test_ternary_ptq.py::test_zero_tensor_is_safe PASSED               [ 28%]
 tests/test_ternary_ptq.py::test_ternarize_linear_inplace PASSED          [ 42%]
-tests/test_ternary_ptq.py::test_size_math FAILED                         [ 57%]
+tests/test_ternary_ptq.py::test_size_math PASSED                         [ 57%]
 tests/test_ternary_ptq.py::test_demo_report_fields PASSED                [ 71%]
 tests/test_ternary_ptq.py::test_absmean_scale_positive PASSED            [ 85%]
 tests/test_ternary_ptq.py::test_version PASSED                           [100%]
 
-=================================== FAILURES ===================================
-________________________________ test_size_math ________________________________
-
-    def test_size_math():
-        m = nn.Linear(1000, 1000)  # 1e6 weights
-        s = tp.size_report(m)
-        assert s["linear_params"] == 1_000_000
-        # 5 weights per byte -> 200_000 bytes packed
->       assert s["ternary_bytes"] == 200_000 + 0
-E       assert 202000 == (200000 + 0)
-
-tests/test_ternary_ptq.py:39: AssertionError
-=========================== short test summary info ============================
-FAILED tests/test_ternary_ptq.py::test_size_math - assert 202000 == (200000 + 0)
-========================= 1 failed, 6 passed in 1.13s ==========================
+============================== 7 passed in 1.64s ===============================
