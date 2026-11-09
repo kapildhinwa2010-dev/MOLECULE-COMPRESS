@@ -62,17 +62,29 @@ plus `ci_logs/experiment.log` back to this branch.
 
 </details>
 
-## 📈 Expected results (to be replaced by measured numbers)
+## 📈 Measured results (Experiment A, Qwen2.5-0.5B, CI run)
 
-| Config | Expected | Why |
+| Config | Perplexity | Verdict |
 |---|---|---|
-| bf16 baseline | ppl ~3-6 on this corpus | normal model |
-| int8 dynamic PTQ | near baseline | known-safe tier |
-| full ternary PTQ | **collapse (ppl >> 10x)** | 1.6 bits/weight cannot represent trained weights |
-| single-layer ternary | layer-dependent delta | sensitivity map |
+| bf16 baseline | 14.15 | normal model |
+| int8 dynamic PTQ | 139.90 | worse than expected (~10x) - naive dynamic quant, no calibration |
+| **full ternary PTQ** | **~8.2e+301** | 💥 **total collapse - hypothesis proven** |
 
-⚠️ Until `results/ptq_report.json` exists in this repo, every number above is
-a hypothesis, not a result.
+**Sensitivity map (one layer ternarized at a time):**
+
+| Layer type | Solo ppl | Reading |
+|---|---|---|
+| early q/k_proj (layers 0-13) | 15-32 | attention keys/values tolerate ternarization |
+| o_proj / v_proj (mid) | 1e5-4e5 | break immediately |
+| mid MLP (gate/up/down) | 3e4-5e6 | catastrophic |
+| **lm_head** | **~2e+248** | the single most sensitive layer - never ternarize |
+
+**Size accounting:** 988 MB (bf16) → 494 MB (int8) → **98.9 MB (packed ternary, 10x)**
+- but the 98.9 MB model is measured garbage: **compression ratio without a quality gate is meaningless.**
+
+Source of truth: `results/ptq_report.json` (committed by the experiment run).
+Takeaway: post-training ternarization of a normally-trained LLM is refuted
+with numbers; ternary requires training-time QAT (Experiment C).
 
 ## 🗺️ Roadmap
 
