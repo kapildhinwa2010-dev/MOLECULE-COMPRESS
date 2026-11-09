@@ -74,14 +74,9 @@ def ternarize_(module: nn.Module, names=None) -> int:
     return hit
 
 
-def packed_ternary_bytes(numel: int) -> int:
-    """5 trits per byte (3^5 = 243 <= 256) -> 1.6 bits per weight."""
-    return math.ceil(numel * 5 / 5)  # placeholder, replaced below
-
-
 def ternary_bytes(numel: int) -> int:
-    """Packed ternary storage: 8 bits per 5 weights."""
-    return math.ceil(numel / 5) * 1  # 1 byte per 5 weights
+    """Packed ternary storage: 5 trits per byte (3^5 = 243 <= 256)."""
+    return math.ceil(numel / 5)
 
 
 def size_report(model: nn.Module) -> dict:
@@ -96,9 +91,10 @@ def size_report(model: nn.Module) -> dict:
         "total_params": total_params,
         "linear_params": linear_params,
         "bf16_bytes": total_params * 2,
-        "int8_bytes": linear_params + (total_params - linear_params) * 2,
-        "ternary_bytes": linear_params + (total_params - linear_params) * 2,
-        # linear weights packed at 1.6 bits; everything else stays bf16
+        # linear weights int8 (1 byte), everything else stays bf16
+        "int8_bytes": linear_params * 1 + (total_params - linear_params) * 2,
+        # linear weights packed ternary (5 per byte), everything else bf16
+        "ternary_bytes": ternary_bytes(linear_params) + (total_params - linear_params) * 2,
     }
 
 
