@@ -109,10 +109,15 @@ def perplexity(model, tokenizer, texts=CORPUS) -> float:
     with torch.no_grad():
         for t in texts:
             enc = tokenizer(t, return_tensors="pt")
+            # Causal-LM loss shifts labels, so the first token is context only.
+            n = enc["input_ids"].numel() - 1
+            if n <= 0:
+                continue
             out = model(**enc, labels=enc["input_ids"])
-            n = enc["input_ids"].numel()
             nll += out.loss.item() * n
             ntok += n
+    if ntok == 0:
+        raise ValueError("perplexity requires at least one text with two or more tokens")
     return math.exp(nll / ntok)
 
 
@@ -128,9 +133,11 @@ def layer_sensitivity(model, tokenizer, texts=CORPUS, k: int = 12) -> list:
     for i in idx:
         name, m = linears[i]
         ternarize_(model, names={name})
-        ppl = perplexity(model, tokenizer, texts)
-        with torch.no_grad():
-            m.weight.copy_(saved[name])
+        try:
+            ppl = perplexity(model, tokenizer, texts)
+        finally:
+            with torch.no_grad():
+                m.weight.copy_(saved[name])
         rows.append({"layer": name, "ppl_solo": round(ppl, 4)})
     return rows
 

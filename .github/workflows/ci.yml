@@ -6,14 +6,15 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-  contents: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -26,12 +27,11 @@ jobs:
           set -o pipefail
           mkdir -p ci_logs
           python -m pytest tests/ -v 2>&1 | tee ci_logs/pytest.log
-      - name: Commit CI log
+      - name: Upload CI log
         if: always()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ci_logs/pytest.log
-          git commit -m "ci: update pytest log [skip ci]" || echo "nothing to commit"
-          git pull --rebase origin main || true
-          git push || echo "push skipped"
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-log
+          path: ci_logs/pytest.log
+          if-no-files-found: warn
+          retention-days: 14
