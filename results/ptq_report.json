@@ -1,0 +1,69 @@
+{
+  "experiment": "ternary PTQ collapse (A)",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "version": "0.1.0",
+  "baseline_ppl": 14.1541,
+  "int8_ppl": 139.9037,
+  "ternary_ppl": 8.233887632216209e+301,
+  "collapse_factor": 5.81730406153154e+300,
+  "layers_ternarized": 169,
+  "sizes": {
+    "total_params": 494032768,
+    "linear_params": 493961216,
+    "bf16_bytes": 988065536,
+    "int8_bytes": 494104320,
+    "ternary_bytes": 98935348
+  },
+  "sensitivity": [
+    {
+      "layer": "model.layers.0.self_attn.q_proj",
+      "ppl_solo": 32.0879
+    },
+    {
+      "layer": "model.layers.2.self_attn.k_proj",
+      "ppl_solo": 19.7343
+    },
+    {
+      "layer": "model.layers.4.self_attn.o_proj",
+      "ppl_solo": 446470.3959
+    },
+    {
+      "layer": "model.layers.6.mlp.gate_proj",
+      "ppl_solo": 518738.6683
+    },
+    {
+      "layer": "model.layers.8.mlp.up_proj",
+      "ppl_solo": 5062622.6966
+    },
+    {
+      "layer": "model.layers.10.mlp.down_proj",
+      "ppl_solo": 5439504.2066
+    },
+    {
+      "layer": "model.layers.13.self_attn.k_proj",
+      "ppl_solo": 14.9442
+    },
+    {
+      "layer": "model.layers.15.self_attn.v_proj",
+      "ppl_solo": 364862.8627
+    },
+    {
+      "layer": "model.layers.17.self_attn.o_proj",
+      "ppl_solo": 14926.7382
+    },
+    {
+      "layer": "model.layers.19.mlp.gate_proj",
+      "ppl_solo": 33858.0233
+    },
+    {
+      "layer": "model.layers.21.mlp.down_proj",
+      "ppl_solo": 58951.0612
+    },
+    {
+      "layer": "lm_head",
+      "ppl_solo": 2.0881277699702557e+248
+    }
+  ],
+  "corpus_size": 8,
+  "seconds": 88.8
+}
