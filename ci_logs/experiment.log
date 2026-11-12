@@ -1,7 +1,7 @@
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 [transformers] `torch_dtype` is deprecated! Use `dtype` instead!
 loading Qwen/Qwen2.5-0.5B
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:49,  5.89it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1283.25it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:43,  6.71it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1583.05it/s]
 /home/runner/work/MOLECULE-COMPRESS/MOLECULE-COMPRESS/ternary_ptq.py:148: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
 For migrations of users: 
 1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
@@ -16,8 +16,8 @@ baseline ppl ...
 baseline ppl = 14.1106
 int8 dynamic PTQ ppl ...
 full ternary PTQ ...
-ternary ppl = 2.133805748149783e+302 after 169 layers
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:45,  6.37it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1231.29it/s]
+ternary ppl = 2.131308660437631e+302 after 169 layers
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:30,  9.44it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1543.16it/s]
 layer sensitivity (k = 12 ) ...
 report written to results/ptq_report.json
 {
@@ -25,9 +25,9 @@ report written to results/ptq_report.json
   "model": "Qwen/Qwen2.5-0.5B",
   "version": "0.1.0",
   "baseline_ppl": 14.1106,
-  "int8_ppl": 159.2641,
-  "ternary_ppl": 2.133805748149783e+302,
-  "collapse_factor": 1.5121983299424546e+301,
+  "int8_ppl": 138.5319,
+  "ternary_ppl": 2.131308660437631e+302,
+  "collapse_factor": 1.510428617816325e+301,
   "layers_ternarized": 169,
   "sizes": {
     "total_params": 494032768,
@@ -37,5 +37,5 @@ report written to results/ptq_report.json
     "ternary_bytes": 98935348
   },
   "corpus_size": 8,
-  "seconds": 38.2
+  "seconds": 39.0
 }

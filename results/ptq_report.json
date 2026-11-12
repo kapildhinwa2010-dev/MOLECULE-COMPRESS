@@ -3,9 +3,9 @@
   "model": "Qwen/Qwen2.5-0.5B",
   "version": "0.1.0",
   "baseline_ppl": 14.1106,
-  "int8_ppl": 159.2641,
-  "ternary_ppl": 2.133805748149783e+302,
-  "collapse_factor": 1.5121983299424546e+301,
+  "int8_ppl": 138.5319,
+  "ternary_ppl": 2.131308660437631e+302,
+  "collapse_factor": 1.510428617816325e+301,
   "layers_ternarized": 169,
   "sizes": {
     "total_params": 494032768,
@@ -17,27 +17,27 @@
   "sensitivity": [
     {
       "layer": "model.layers.0.self_attn.q_proj",
-      "ppl_solo": 31.8322
+      "ppl_solo": 31.8326
     },
     {
       "layer": "model.layers.2.self_attn.k_proj",
-      "ppl_solo": 19.4299
+      "ppl_solo": 19.4298
     },
     {
       "layer": "model.layers.4.self_attn.o_proj",
-      "ppl_solo": 447243.4844
+      "ppl_solo": 447244.3768
     },
     {
       "layer": "model.layers.6.mlp.gate_proj",
-      "ppl_solo": 510650.2027
+      "ppl_solo": 510650.847
     },
     {
       "layer": "model.layers.8.mlp.up_proj",
-      "ppl_solo": 5060268.4045
+      "ppl_solo": 5060270.5576
     },
     {
       "layer": "model.layers.10.mlp.down_proj",
-      "ppl_solo": 5397010.3216
+      "ppl_solo": 5397019.9821
     },
     {
       "layer": "model.layers.13.self_attn.k_proj",
@@ -45,25 +45,25 @@
     },
     {
       "layer": "model.layers.15.self_attn.v_proj",
-      "ppl_solo": 365259.2869
+      "ppl_solo": 365258.7939
     },
     {
       "layer": "model.layers.17.self_attn.o_proj",
-      "ppl_solo": 15009.6575
+      "ppl_solo": 15009.6476
     },
     {
       "layer": "model.layers.19.mlp.gate_proj",
-      "ppl_solo": 33378.3789
+      "ppl_solo": 33378.4279
     },
     {
       "layer": "model.layers.21.mlp.down_proj",
-      "ppl_solo": 59371.3119
+      "ppl_solo": 59371.294
     },
     {
       "layer": "lm_head",
-      "ppl_solo": 2.5863140136379647e+248
+      "ppl_solo": 2.5866224585236217e+248
     }
   ],
   "corpus_size": 8,
-  "seconds": 38.2
+  "seconds": 39.0
 }
