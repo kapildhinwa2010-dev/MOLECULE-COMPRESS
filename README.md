@@ -1,6 +1,8 @@
 
 # NEGATIVE. RESULTS
 
+[![Stars](https://img.shields.io/github/stars/kapildhinwa2010-dev/MOLECULE-COMPRESS?style=flat-square)](https://github.com/kapildhinwa2010-dev/MOLECULE-COMPRESS/stargazers) [![Forks](https://img.shields.io/github/forks/kapildhinwa2010-dev/MOLECULE-COMPRESS?style=flat-square)](https://github.com/kapildhinwa2010-dev/MOLECULE-COMPRESS/network/members) [![Issues](https://img.shields.io/github/issues/kapildhinwa2010-dev/MOLECULE-COMPRESS?style=flat-square)](https://github.com/kapildhinwa2010-dev/MOLECULE-COMPRESS/issues) [![Top language](https://img.shields.io/github/languages/top/kapildhinwa2010-dev/MOLECULE-COMPRESS?style=flat-square)](https://github.com/kapildhinwa2010-dev/MOLECULE-COMPRESS)
+
 # 🧪 MOLECULE-COMPRESS
 
 **Quality-gated LLM compression experiments.** This repository measures what
