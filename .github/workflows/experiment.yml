@@ -33,7 +33,7 @@ jobs:
           python ternary_ptq.py --model Qwen/Qwen2.5-0.5B --out results/ptq_report.json 2>&1 | tee ci_logs/experiment.log
       - name: Upload experiment output
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: experiment-output
           path: |
